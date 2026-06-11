@@ -213,8 +213,8 @@ export default function Home() {
             Local Voice & Proactive Automation
           </span>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 800, marginTop: '20px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Say Hello to <br />
-            <span className="text-gradient">Lumen AI Companion</span>
+            Your computer. Your AI.<br />
+            <span className="text-gradient">No cloud required.</span>
           </h1>
           <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '1.2rem', maxWidth: '680px', margin: '20px auto 0', fontWeight: 300 }}>
             An offline, personal AI assistant that integrates speech control, active screen reading, and proactive desktop tools directly on your computer.

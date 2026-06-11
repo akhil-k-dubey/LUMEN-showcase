@@ -1,19 +1,12 @@
-import os from 'os';
-
 export default function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Query actual hardware specs using Node's os module
-  const systemOS = `${os.type().replace('Windows_NT', 'Windows')} ${os.release()}`;
-  let systemCPU = os.cpus()[0]?.model || "Unknown CPU";
-  if (systemCPU.includes("Intel")) {
-    systemCPU = "Intel Core Processor";
-  } else if (systemCPU.includes("AMD")) {
-    systemCPU = "AMD Ryzen Processor";
-  }
-  const systemRAM = `${Math.round(os.totalmem() / (1024 ** 3))} GB`;
+  // Hardcoded standard specs to represent a real local desktop experience on web hosts
+  const systemOS = "Windows 11 Pro";
+  const systemCPU = "Intel Core i7-12700H";
+  const systemRAM = "16 GB";
 
   res.status(200).json({
     name: "Lumen",
@@ -30,7 +23,7 @@ export default function handler(req, res) {
     },
     skills: [
       { name: "Application Launcher", category: "System", desc: "Launches local programs cleanly on your active desktop." },
-      { name: "Task Manager Manager", category: "System", desc: "Shuts down background application processes safely." },
+      { name: "Task Manager", category: "System", desc: "Shuts down background application processes safely." },
       { name: "Active Screen Reader", category: "Automation", desc: "Translates current window visual structures using the screen oracle." },
       { name: "Web Intelligence Search", category: "Web", desc: "Searches Google/DuckDuckGo and summarizes page texts." },
       { name: "Smart Clipboard Log", category: "Utility", desc: "Listens to copy events and monitors clipboard history stacks." },

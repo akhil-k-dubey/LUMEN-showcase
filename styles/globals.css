@@ -246,6 +246,7 @@ h1, h2, h3, h4, h5 {
 .orb-standby .ai-orb {
   background: radial-gradient(circle, hsla(var(--color-purple) / 0.6) 0%, hsla(var(--bg-card) / 0.8) 100%);
   filter: drop-shadow(0 0 10px hsla(var(--color-purple) / 0.2));
+  animation: pulse-standby 4s infinite ease-in-out;
   transform: scale(0.9);
 }
 .orb-standby .ai-orb-ring-1 {
@@ -341,6 +342,17 @@ h1, h2, h3, h4, h5 {
   50% {
     transform: scale(1.05);
     filter: drop-shadow(0 0 35px hsla(var(--color-cyan) / 0.75)) drop-shadow(0 0 15px hsla(var(--color-purple) / 0.4));
+  }
+}
+
+@keyframes pulse-standby {
+  0%, 100% {
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 8px hsla(var(--color-purple) / 0.25));
+  }
+  50% {
+    transform: scale(0.93);
+    filter: drop-shadow(0 0 18px hsla(var(--color-purple) / 0.55));
   }
 }
 

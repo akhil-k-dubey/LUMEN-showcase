@@ -150,7 +150,7 @@ class ShowcaseHandler(BaseHTTPRequestHandler):
                 },
                 "skills": [
                     { "name": "Application Launcher", "category": "System", "desc": "Launches local programs cleanly on your active desktop." },
-                    { "name": "Task Manager Manager", "category": "System", "desc": "Shuts down background application processes safely." },
+                    { "name": "Task Manager", "category": "System", "desc": "Shuts down background application processes safely." },
                     { "name": "Active Screen Reader", "category": "Automation", "desc": "Translates current window visual structures using the screen oracle." },
                     { "name": "Web Intelligence Search", "category": "Web", "desc": "Searches Google/DuckDuckGo and summarizes page texts." },
                     { "name": "Smart Clipboard Log", "category": "Utility", "desc": "Listens to copy events and monitors clipboard history stacks." },
