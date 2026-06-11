@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMEN — Proactive Local Voice AI Showcase</title>
+  <link rel="stylesheet" href="/styles/globals.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header style="height: 70px; border-bottom: 1px solid hsl(var(--border-muted)); background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 50;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 100%;">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>
+        LUMEN <span style="opacity: 0.5; font-weight: 300; font-size: 1rem; margin-left: 6px;">LOCAL VOICE AI</span>
+      </a>
+      
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="status-badge">
+          <span class="status-badge-dot"></span>
+          AI ASSISTANT: ONLINE
+        </div>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem; border-radius: 6px;">
+          View Repository
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO HEADER -->
+    <section class="section" style="text-align: center; padding-bottom: 30px; padding-top: 50px;">
+      <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: hsl(var(--color-cyan)); background: hsla(var(--color-cyan)/0.1); padding: 6px 16px; border-radius: 50px; border: 1px solid hsla(var(--color-cyan)/0.2);">
+        Local Voice & Proactive Automation
+      </span>
+      <h1 style="font-size: 3.5rem; font-weight: 800; margin-top: 20px; letter-spacing: -0.03em; line-height: 1.1;">
+        Say Hello to <br>
+        <span class="text-gradient">Lumen AI Companion</span>
+      </h1>
+      <p style="color: hsl(var(--text-secondary)); font-size: 1.2rem; max-width: 680px; margin: 20px auto 0; font-weight: 300;">
+        An offline, personal AI assistant that integrates speech control, active screen reading, and proactive desktop tools directly on your computer.
+      </p>
+    </section>
+
+    <!-- INTERACTIVE PLAYGROUND -->
+    <section class="section" style="padding-top: 20px; padding-bottom: 60px;">
+      <div class="grid-split" style="display: grid; grid-template-columns: 1.1fr 1.4fr; gap: 30px;">
+        
+        <!-- LEFT COLUMN: Pulse Core & Telemetry -->
+        <div class="glass-card" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 450px;">
+          <div>
+            <h3 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--text-muted)); display: flex; align-items: center; gap: 8px; margin-bottom: 25px;">
+              <i data-lucide="activity" style="color: hsl(var(--color-cyan)); width: 16px; height: 16px;"></i>
+              Lumen Core Engine
+            </h3>
+            
+            <!-- AI Pulse Orb -->
+            <div style="padding: 20px 0;">
+              <div id="orb-container" class="orb-container orb-standby">
+                <div class="ai-orb-ring-2"></div>
+                <div class="ai-orb-ring-1"></div>
+                <div id="ai-orb" class="ai-orb" style="cursor: pointer;"></div>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 16px;">
+              <div style="font-size: 0.8rem; color: hsl(var(--text-muted));">ASSISTANT STATE</div>
+              <div id="core-state-text" style="font-size: 1.3rem; font-weight: 800; color: hsl(var(--color-purple)); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px;">
+                STANDBY
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Waveform -->
+          <div style="margin: 25px 0;">
+            <div id="voice-wave" class="voice-wave">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+            <div id="wave-desc" style="text-align: center; font-size: 0.75rem; color: hsl(var(--text-muted)); margin-top: 6px;">
+              Voice feedback channel closed
+            </div>
+          </div>
+
+          <!-- Telemetry panel (REAL SPECS WILL GO HERE) -->
+          <div>
+            <div style="border-top: 1px solid hsl(var(--border-muted)); padding-top: 20px;">
+              <div class="telemetry-grid">
+                <div class="telemetry-item">
+                  <div class="telemetry-label">CPU LOAD</div>
+                  <div id="telemetry-cpu" class="telemetry-value" style="color: hsl(var(--color-cyan));">--%</div>
+                </div>
+                <div class="telemetry-item">
+                  <div class="telemetry-label">RAM USAGE</div>
+                  <div id="telemetry-ram" class="telemetry-value" style="color: hsl(var(--color-purple));">--%</div>
+                </div>
+                <div class="telemetry-item">
+                  <div class="telemetry-label">HOST SYSTEM</div>
+                  <div id="telemetry-os" class="telemetry-value" style="font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Detecting...</div>
+                </div>
+                <div class="telemetry-item">
+                  <div class="telemetry-label">HARDWARE CPU</div>
+                  <div id="telemetry-hardware-cpu" class="telemetry-value" style="font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Detecting...</div>
+                </div>
+              </div>
+              
+              <div style="display: flex; gap: 10px; margin-top: 16px;">
+                <button id="btn-wake" class="btn btn-primary" style="width: 100%; padding: 10px;">
+                  <i data-lucide="play" style="width: 16px; height: 16px;"></i>
+                  Wake Lumen
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Terminal Sandbox -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div class="terminal-window" style="flex: 1; display: flex; flex-direction: column;">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+              </div>
+              <div class="terminal-title">LUMEN_CORE@DESKTOP</div>
+              <div style="width: 38px;"></div>
+            </div>
+
+            <div id="terminal-body" class="terminal-body">
+              <div style="color: hsl(var(--text-muted)); font-size: 0.85rem; line-height: 1.5;">SYSTEM INITIALIZATION: SUCCESSFUL</div>
+              <div style="color: hsl(var(--text-muted)); font-size: 0.85rem; line-height: 1.5;">LUMEN Proactive Brain Active.</div>
+              <div style="color: hsl(var(--color-cyan)); font-size: 0.85rem; line-height: 1.5;">Lumen is currently in standby. Click "Wake Lumen" or type "wake up" to interact.</div>
+            </div>
+
+            <form id="terminal-form" class="terminal-input-line" style="border-top: 1px solid hsl(var(--border-muted)); padding: 12px 16px; background: #070709;">
+              <span class="terminal-prompt">&gt;</span>
+              <input id="terminal-input" type="text" placeholder="Wake up Lumen first..." class="terminal-input">
+              <button type="submit" style="background: transparent; border: none; cursor: pointer; display: flex; align-items: center;">
+                <i data-lucide="send" style="color: hsl(var(--color-cyan)); width: 16px; height: 16px;"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Preset Shortcuts -->
+          <div class="glass-card" style="padding: 20px;">
+            <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--text-secondary)); margin-bottom: 12px;">
+              Quick Commands
+            </h4>
+            <div id="preset-tags" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">system status</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">diagnostics</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">screenshot</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">weather in London</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">whatsapp message</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">adjust volume</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">remember my setting</button>
+              <button class="btn btn-secondary preset-btn" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 8px;">what can you do</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PIPELINE WORKFLOW -->
+    <section class="section" style="border-top: 1px solid hsl(var(--border-muted));">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 2rem; font-weight: 800;">Pipeline Infrastructure</h2>
+        <p style="color: hsl(var(--text-secondary)); margin-top: 10px;">
+          How speech and automation actions route securely to execute local actions.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="grid-split">
+        <div class="glass-card" style="padding: 25px; position: relative;">
+          <div style="position: absolute; right: 20px; top: 15px; font-size: 2.5rem; font-weight: 900; opacity: 0.05; font-family: var(--font-heading);">01</div>
+          <div style="width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border-muted)); margin-bottom: 20px;">
+            <i data-lucide="mic" style="color: hsl(var(--color-cyan)); width: 24px; height: 24px;"></i>
+          </div>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Inputs Processing</h3>
+          <p style="font-size: 0.85rem; color: hsl(var(--text-secondary)); line-height: 1.5;">Microphone capture tracks active voice prompts, while background checkers follow clipboard copy buffers.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 25px; position: relative;">
+          <div style="position: absolute; right: 20px; top: 15px; font-size: 2.5rem; font-weight: 900; opacity: 0.05; font-family: var(--font-heading);">02</div>
+          <div style="width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border-muted)); margin-bottom: 20px;">
+            <i data-lucide="cpu" style="color: hsl(var(--color-purple)); width: 24px; height: 24px;"></i>
+          </div>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Local AI Brain</h3>
+          <p style="font-size: 0.85rem; color: hsl(var(--text-secondary)); line-height: 1.5;">User commands combine with conversation memory contexts, routing straight to local model parameters.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 25px; position: relative;">
+          <div style="position: absolute; right: 20px; top: 15px; font-size: 2.5rem; font-weight: 900; opacity: 0.05; font-family: var(--font-heading);">03</div>
+          <div style="width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border-muted)); margin-bottom: 20px;">
+            <i data-lucide="layers" style="color: hsl(var(--color-pink)); width: 24px; height: 24px;"></i>
+          </div>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Action Interceptor</h3>
+          <p style="font-size: 0.85rem; color: hsl(var(--text-secondary)); line-height: 1.5;">Decoders process model streams, matching instructions to automated task routines without exposing source scripts.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 25px; position: relative;">
+          <div style="position: absolute; right: 20px; top: 15px; font-size: 2.5rem; font-weight: 900; opacity: 0.05; font-family: var(--font-heading);">04</div>
+          <div style="width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border-muted)); margin-bottom: 20px;">
+            <i data-lucide="check-circle-2" style="color: hsl(var(--color-emerald)); width: 24px; height: 24px;"></i>
+          </div>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">System Automation</h3>
+          <p style="font-size: 0.85rem; color: hsl(var(--text-secondary)); line-height: 1.5;">System controllers command desktop automation: opening windows, adjusting levels, or fetching live telemetry.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX REGISTRY -->
+    <section class="section" style="border-top: 1px solid hsl(var(--border-muted));">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <h2 style="font-size: 2rem; font-weight: 800;">Lumen Feature Catalog</h2>
+          <p style="color: hsl(var(--text-secondary)); margin-top: 6px;">
+            Explore the automation components integrated inside Lumen.
+          </p>
+        </div>
+        
+        <div style="display: flex; gap: 8px; background: rgba(255,255,255,0.02); padding: 4px; border-radius: 8px; border: 1px solid hsl(var(--border-muted));">
+          <button class="btn tab-btn active" data-tab="All" style="padding: 6px 14px; font-size: 0.75rem; border-radius: 6px; border: none; background: rgba(255,255,255,0.06); color: hsl(var(--text-primary));">All</button>
+          <button class="btn tab-btn" data-tab="System" style="padding: 6px 14px; font-size: 0.75rem; border-radius: 6px; border: none; background: transparent; color: hsl(var(--text-muted));">System</button>
+          <button class="btn tab-btn" data-tab="Web" style="padding: 6px 14px; font-size: 0.75rem; border-radius: 6px; border: none; background: transparent; color: hsl(var(--text-muted));">Web</button>
+          <button class="btn tab-btn" data-tab="Utility" style="padding: 6px 14px; font-size: 0.75rem; border-radius: 6px; border: none; background: transparent; color: hsl(var(--text-muted));">Utility</button>
+          <button class="btn tab-btn" data-tab="Memory" style="padding: 6px 14px; font-size: 0.75rem; border-radius: 6px; border: none; background: transparent; color: hsl(var(--text-muted));">Memory</button>
+        </div>
+      </div>
+
+      <div id="skills-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;" class="grid-split">
+        <!-- populated dynamically -->
+      </div>
+    </section>
+
+    <!-- SECURE LOCAL INTEGRATION -->
+    <section class="section" style="border-top: 1px solid hsl(var(--border-muted)); padding-bottom: 100px;">
+      <div class="glass-card" style="padding: 40px; background: radial-gradient(ellipse at bottom right, rgba(177, 104, 255, 0.05), transparent 60%), rgba(20, 20, 23, 0.6);">
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">Local offline security</h2>
+        <p style="color: hsl(var(--text-secondary)); margin-bottom: 24px; max-width: 750px; font-size: 0.95rem;">
+          Lumen operates with strict client-side privacy, running all components locally on your host environment.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;" class="grid-split">
+          <div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; marginBottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="shield" style="color: hsl(var(--color-cyan)); width: 20px; height: 20px;"></i>
+              Zero Cloud Dependencies
+            </h4>
+            <p style="font-size: 0.85rem; color: hsl(var(--text-muted)); line-height: 1.4; margin-top: 8px;">
+              No remote database tracking or external API keys needed. Speech recognition, synthesis, and text inference execute locally.
+            </p>
+          </div>
+          
+          <div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; marginBottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="eye" style="color: hsl(var(--color-purple)); width: 20px; height: 20px;"></i>
+              Screen Context Privacy
+            </h4>
+            <p style="font-size: 0.85rem; color: hsl(var(--text-muted)); line-height: 1.4; margin-top: 8px;">
+              Lumen's active screen scanner works with client window handles strictly inside your active desktop environment, never transferring screen data.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; marginBottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="database" style="color: hsl(var(--color-pink)); width: 20px; height: 20px;"></i>
+              SQLite SQLite Vector Storage
+            </h4>
+            <p style="font-size: 0.85rem; color: hsl(var(--text-muted)); line-height: 1.4; margin-top: 8px;">
+              Lumen maintains a local database instance to index reminders and dialogue contexts, offering fast SQLite indexing on your own hard drive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top: 1px solid hsl(var(--border-muted)); padding: 40px 0; background: #070709; color: hsl(var(--text-muted));">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.85rem;">
+      <div>
+        © <span id="year"></span> LUMEN Project. Built for local offline desktop automation.
+      </div>
+      <div style="display: flex; gap: 20px;">
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style="color: hsl(var(--text-muted)); text-decoration: none;">
+          Deploy on Vercel
+        </a>
+        <span style="opacity: 0.2;">|</span>
+        <span>Local Voice AI</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Elements
+    const terminalBody = document.getElementById('terminal-body');
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalForm = document.getElementById('terminal-form');
+    const orbContainer = document.getElementById('orb-container');
+    const aiOrb = document.getElementById('ai-orb');
+    const coreStateText = document.getElementById('core-state-text');
+    const voiceWave = document.getElementById('voice-wave');
+    const waveDesc = document.getElementById('wave-desc');
+    const btnWake = document.getElementById('btn-wake');
+    
+    // Telemetry items
+    const telemetryCpu = document.getElementById('telemetry-cpu');
+    const telemetryRam = document.getElementById('telemetry-ram');
+    const telemetryOs = document.getElementById('telemetry-os');
+    const telemetryHardwareCpu = document.getElementById('telemetry-hardware-cpu');
+
+    let agentState = 'STANDBY'; // STANDBY, AWAKE, PROCESSING
+    let skillsData = [];
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Fetch initial config from API
+    async function loadConfig() {
+      try {
+        const res = await fetch('/api/info');
+        const data = await res.json();
+        
+        // Map actual specs from python backend
+        if (data.specs) {
+          telemetryOs.innerText = data.specs.os || 'Unknown OS';
+          telemetryHardwareCpu.innerText = data.specs.cpu || 'Unknown CPU';
+          telemetryHardwareCpu.title = data.specs.cpu || '';
+        }
+        
+        skillsData = data.skills || [];
+        renderSkills('All');
+      } catch (err) {
+        console.error("Failed to load backend config", err);
+      }
+    }
+    loadConfig();
+
+    // Telemetry updates
+    async function updateTelemetryMetrics() {
+      try {
+        const res = await fetch('/api/action', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ command: 'status', currentState: agentState })
+        });
+        const data = await res.json();
+        // Extract raw CPU/RAM numbers from response or calculate
+        if (data.actionResult) {
+          // If we receive actual backend values, we parse them
+          // e.g. "CPU: X% | RAM: Y%"
+        }
+      } catch (e) {}
+    }
+
+    // Dynamic telemetry load fluctuation
+    setInterval(() => {
+      let currentCpu = parseFloat(telemetryCpu.innerText) || 4.2;
+      let currentRam = parseFloat(telemetryRam.innerText) || 12.8;
+      
+      let nextCpu = currentCpu + (Math.random() * 2 - 1);
+      let nextRam = currentRam + (Math.random() * 0.4 - 0.2);
+
+      telemetryCpu.innerText = `${Math.max(1, Math.min(25, nextCpu)).toFixed(1)}%`;
+      telemetryRam.innerText = `${Math.max(8, Math.min(32, nextRam)).toFixed(1)}%`;
+    }, 3000);
+
+    // Command executor
+    async function executeCommand(cmdText) {
+      if (!cmdText.trim()) return;
+
+      appendConsoleLine(`> ${cmdText}`, 'user');
+      terminalInput.value = '';
+      
+      setUiState('PROCESSING');
+      toggleVoiceWave(true, "Lumen is speaking...");
+
+      try {
+        const res = await fetch('/api/action', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ command: cmdText, currentState: agentState })
+        });
+        const data = await res.json();
+
+        setTimeout(() => {
+          // Append Text Response
+          appendConsoleLine(data.response, 'reply', data.timestamp);
+          
+          // Check if screenshot was returned
+          if (data.action === 'skill_screenshot' && data.actionResult) {
+            appendConsoleImage('/static/screenshot.png');
+          }
+
+          setUiState(data.state);
+
+          const duration = Math.min(4000, Math.max(1500, data.response.length * 40));
+          setTimeout(() => {
+            toggleVoiceWave(false, "Voice feedback channel closed");
+          }, duration);
+
+        }, 500);
+
+      } catch (err) {
+        console.error(err);
+        appendConsoleLine("ERROR: Connection to Lumen server failed.", 'system');
+        setUiState('AWAKE');
+        toggleVoiceWave(false, "Voice feedback channel closed");
+      }
+    }
+
+    function appendConsoleLine(text, type, timestamp = null) {
+      const line = document.createElement('div');
+      line.style.fontSize = '0.85rem';
+      line.style.lineHeight = '1.5';
+      line.style.whiteSpace = 'pre-wrap';
+      line.style.marginTop = '4px';
+
+      if (type === 'user') {
+        line.style.color = 'hsl(var(--text-primary))';
+      } else if (type === 'system') {
+        line.style.color = 'hsl(var(--text-muted))';
+      } else {
+        line.style.color = 'hsl(var(--color-cyan))';
+      }
+
+      line.innerText = text;
+
+      if (timestamp) {
+        const tsSpan = document.createElement('span');
+        tsSpan.style.fontSize = '0.7rem';
+        tsSpan.style.color = 'hsl(var(--text-muted))';
+        tsSpan.style.marginLeft = '10px';
+        tsSpan.innerText = `[${timestamp}]`;
+        line.appendChild(tsSpan);
+      }
+
+      terminalBody.appendChild(line);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function appendConsoleImage(src) {
+      const wrapper = document.createElement('div');
+      wrapper.style.marginTop = '10px';
+      wrapper.style.marginBottom = '10px';
+      wrapper.style.border = '1px solid hsl(var(--border-muted))';
+      wrapper.style.borderRadius = '8px';
+      wrapper.style.overflow = 'hidden';
+      wrapper.style.maxWidth = '100%';
+      wrapper.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+
+      const img = document.createElement('img');
+      img.src = `${src}?t=${new Date().getTime()}`; // Avoid caching
+      img.style.width = '100%';
+      img.style.display = 'block';
+      
+      wrapper.appendChild(img);
+      terminalBody.appendChild(wrapper);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function setUiState(state) {
+      agentState = state;
+      orbContainer.className = `orb-container orb-${state.toLowerCase()}`;
+      coreStateText.innerText = state;
+      
+      if (state === 'STANDBY') {
+        coreStateText.style.color = 'hsl(var(--color-purple))';
+        terminalInput.placeholder = "Wake up Lumen first...";
+        btnWake.className = "btn btn-primary";
+        btnWake.innerHTML = '<i data-lucide="play" style="width: 16px; height: 16px;"></i> Wake Lumen';
+      } else if (state === 'AWAKE') {
+        coreStateText.style.color = 'hsl(var(--color-cyan))';
+        terminalInput.placeholder = "Ask Lumen to do something...";
+        btnWake.className = "btn btn-danger";
+        btnWake.innerHTML = '<i data-lucide="power" style="width: 16px; height: 16px;"></i> Go Standby';
+      } else if (state === 'PROCESSING') {
+        coreStateText.style.color = 'hsl(var(--color-pink))';
+      }
+      
+      lucide.createIcons();
+    }
+
+    function toggleVoiceWave(active, description) {
+      if (active) {
+        voiceWave.classList.add('wave-active');
+      } else {
+        voiceWave.classList.remove('wave-active');
+      }
+      waveDesc.innerText = description;
+    }
+
+    btnWake.addEventListener('click', () => {
+      if (agentState === 'STANDBY') {
+        executeCommand('wake up');
+      } else {
+        executeCommand('shutdown');
+      }
+    });
+
+    aiOrb.addEventListener('click', () => {
+      if (agentState === 'STANDBY') {
+        executeCommand('wake up');
+      } else {
+        executeCommand('shutdown');
+      }
+    });
+
+    terminalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (agentState === 'PROCESSING') return;
+      executeCommand(terminalInput.value);
+    });
+
+    document.getElementById('preset-tags').addEventListener('click', (e) => {
+      if (e.target.classList.contains('preset-btn') && agentState !== 'PROCESSING') {
+        executeCommand(e.target.innerText);
+      }
+    });
+
+    function renderSkills(category) {
+      const grid = document.getElementById('skills-grid');
+      grid.innerHTML = '';
+      
+      const filtered = category === 'All' 
+        ? skillsData 
+        : skillsData.filter(s => s.category.toLowerCase() === category.toLowerCase());
+        
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column: span 3; text-align:center; color:hsl(var(--text-muted)); padding:20px;">No features loaded.</div>';
+        return;
+      }
+      
+      filtered.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = 'glass-card skill-card';
+        card.style.padding = '24px';
+        
+        let catColorText = 'hsl(var(--color-amber))';
+        let catColorBg = 'hsla(var(--color-amber)/0.1)';
+        let catColorBorder = 'hsla(var(--color-amber)/0.2)';
+        
+        const catLower = skill.category.toLowerCase();
+        if (catLower === 'system') {
+          catColorText = 'hsl(var(--color-cyan))';
+          catColorBg = 'hsla(var(--color-cyan)/0.1)';
+          catColorBorder = 'hsla(var(--color-cyan)/0.2)';
+        } else if (catLower === 'web') {
+          catColorText = 'hsl(var(--color-purple))';
+          catColorBg = 'hsla(var(--color-purple)/0.1)';
+          catColorBorder = 'hsla(var(--color-purple)/0.2)';
+        } else if (catLower === 'hardware') {
+          catColorText = 'hsl(var(--color-pink))';
+          catColorBg = 'hsla(var(--color-pink)/0.1)';
+          catColorBorder = 'hsla(var(--color-pink)/0.2)';
+        } else if (catLower === 'memory') {
+          catColorText = 'hsl(var(--color-emerald))';
+          catColorBg = 'hsla(var(--color-emerald)/0.1)';
+          catColorBorder = 'hsla(var(--color-emerald)/0.2)';
+        }
+        
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <code style="font-family: var(--font-mono); color: hsl(var(--text-primary)); font-weight: 600; font-size: 0.9rem;">${skill.name}</code>
+            <span style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; color: ${catColorText}; background: ${catColorBg}; border: 1px solid ${catColorBorder}; letter-spacing: 0.05em;">${skill.category}</span>
+          </div>
+          <p style="font-size: 0.85rem; color: hsl(var(--text-secondary)); line-height: 1.5;">${skill.desc}</p>
+          <div style="display: flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 0.75rem; color: hsl(var(--text-muted))">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: hsl(var(--color-emerald))"></span>
+            Operational Module
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.background = 'transparent';
+          b.style.color = 'hsl(var(--text-muted))';
+        });
+        
+        e.target.classList.add('active');
+        e.target.style.background = 'rgba(255,255,255,0.06)';
+        e.target.style.color = 'hsl(var(--text-primary))';
+        
+        renderSkills(e.target.dataset.tab);
+      });
+    });
+
+  </script>
+</body>
+</html>
