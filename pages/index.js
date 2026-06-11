@@ -474,7 +474,7 @@ export default function Home() {
                   background: 'rgba(255,255,255,0.02)', 
                   display: 'flex', 
                   alignItems: 'center', 
-                  justify-content: 'center',
+                  justifyContent: 'center',
                   border: '1px solid hsl(var(--border-muted))',
                   marginBottom: '20px'
                 }}>
